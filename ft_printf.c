@@ -31,7 +31,6 @@ void check_flags(va_list	args, char *format)
 {
 	int x =0;
 	char flag = *(format + ft_strlen(format)-1);
-	printf("%c\n",flag);
 	if (flag == 's')
 		ft_putstr(va_arg(args, char *),format);
 	else if (flag == 'c')
@@ -83,14 +82,14 @@ int ft_printf ( const char * format, ... )
 }
 int main ()
 {
-ft_printf("%p\n", 1);       
+ft_printf("3%3d\n", 1);       
 //ft_printf("%5u\n", 300);      
 //ft_printf("%-5u\n", 300);     
 //ft_printf("%05u\n", 300);     
 //ft_printf("%.5u\n", 300);     
 //ft_printf("%-5.5u\n", 300);   
 
-printf("%p\n", 1);          // Default unsigned output: 300
+printf("3%3d\n", 1);          // Default unsigned output: 300
 //printf("%5u\n", 300);         // Field width 5, right-justified: "  300"
 //printf("%-5u\n", 300);        // Field width 5, left-justified: "300  "
 //printf("%05u\n", 300);        // Field width 5, zero-padded: "00300"

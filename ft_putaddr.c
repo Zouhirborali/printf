@@ -39,31 +39,11 @@ void	ft_putaddr(void *addr, char *format)
     int lens = git_n_after_p(format);
     int lens2 = git_n_after_p(format);
     int if_m ;
-    printf("%d\n",len);
-    printf("%d\n",lens);
-    printf("zero %d\n",check_zero(format));
-
-
     chick_l((unsigned long int)addr,&if_m);
 	if_m -=2;
-    printf("i %d\n",if_m);
-
     if(check_maiees(format))
     {
-		ft_putchar('0');
-		ft_putchar(Xx);
-		len-=2;
-        while(lens2 - if_m>0 && lens2 >if_m && ft_itoa(n)[x]!='-')
-        {
-            ft_putchar('0');
-            lens2--;
-        }
-		ft_putaddr_hex((unsigned long int)addr,'x');
-		while((len - lens> 0 && len > 0 && git_n(format) >if_m && lens >=if_m)||(lens <if_m&& len -if_m >0 &&len > 0 && git_n(format) >if_m))
-        {
-            ft_putchar('.');
-            len--;
-        }
+
     }
     else
     {
@@ -79,7 +59,7 @@ void	ft_putaddr(void *addr, char *format)
             if(check_zero(format) && lens == 0 && !check_poin(format))
                 ft_putchar('0');
             else
-                ft_putchar('.');
+                ft_putchar(' ');
 
             len--;
         }

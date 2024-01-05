@@ -12,7 +12,7 @@ void	ft_putchar_p(char c ,char *format)
         ft_putchar(c);
         while(len  >0 &&  (len - 1)>0 ) 
         {
-            ft_putchar('.');
+            ft_putchar(' ');
             len--;
         }
     }
@@ -23,7 +23,7 @@ void	ft_putchar_p(char c ,char *format)
             if(check_zero(format))
                 ft_putchar('0');
             else
-                ft_putchar('.');
+                ft_putchar(' ');
             len--;
         }
         ft_putchar(c);

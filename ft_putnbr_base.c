@@ -52,15 +52,8 @@ void	ft_putnbr_base(unsigned int n, char Xx,char *format)
     int lens = git_n_after_p(format);
     int lens2 = git_n_after_p(format);
     int if_m ;
-    printf("%d\n",len);
-    printf("%d\n",lens);
-    printf("zero %d\n",check_zero(format));
-
-
     chick_l(n,&if_m);
 	if_m -=2;
-    printf("i %d\n",if_m);
-
     if(check_maiees(format))
     {
 		if(check_hash(format))
@@ -77,7 +70,7 @@ void	ft_putnbr_base(unsigned int n, char Xx,char *format)
         ft_putnbr_bb(n,Xx);
         while((len - lens> 0 && len > 0 && git_n(format) >if_m && lens >=if_m)||(lens <if_m&& len -if_m >0 &&len > 0 && git_n(format) >if_m))
         {
-            ft_putchar('.');
+            ft_putchar(' ');
             len--;
         }
     }
@@ -97,7 +90,7 @@ void	ft_putnbr_base(unsigned int n, char Xx,char *format)
             if(check_zero(format) && lens == 0 && !check_poin(format))
                 ft_putchar('0');
             else
-                ft_putchar('.');
+                ft_putchar(' ');
 
             len--;
         }
