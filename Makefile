@@ -1,7 +1,6 @@
 NAME	= libftprintf.a
 CC = gcc
 CFLAGS = -Werror -Wall -Wextra
-RM = rm -rf
 AR = ar rcs
 src = check_maiees.c check_pluse.c check_poin.c check_sp.c\
 	check_zero.c ft_itoa.c ft_printf.c ft_putaddr.c ft_putchar_p.c\
@@ -13,13 +12,13 @@ all:$(NAME)
 $(NAME):$(OBJS)
 	$(AR) $(NAME) $(OBJS)
 %.o: %.c
-	$(CC) $(CFLAGS) -c $@ -o $<
+	$(CC) $(CFLAGS) -c $(SRCS) -I ./
 bonus:all
 
 clean:
-	$(RM) *.o
+	rm -rf *.o
 fclean:clean
-	$(RM) $(NAME)
+	rm -rf $(NAME)
 	
 re:fclean all
 

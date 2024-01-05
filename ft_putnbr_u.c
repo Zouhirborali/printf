@@ -2,14 +2,14 @@
 
 
 
-static void	ft_putnbr_uu(unsigned int n)
+static void	ft_putnbr_uu(unsigned int n,int *j)
 {
 	if (n < 10)
-		ft_putchar(n + '0');
+		ft_putchar(n + '0',j);
 	else
 	{
-		ft_putnbr_uu(n / 10);
-		ft_putnbr_uu(n % 10);
+		ft_putnbr_uu(n / 10,j);
+		ft_putnbr_uu(n % 10,j);
 	}
 }
 
@@ -32,7 +32,7 @@ static int	chick_l(unsigned int n)
 	}
 	return (x);
 }
-void	ft_putnbr_u(unsigned int n, char * format)
+void	ft_putnbr_u(unsigned int n, char * format,int*j)
 {
     int x =0;
     int len =git_n(format);
@@ -44,13 +44,13 @@ void	ft_putnbr_u(unsigned int n, char * format)
     {
         while(lens2 - if_m>0 && lens2 >if_m && ft_itoa(n)[x]!='-')
         {
-            ft_putchar('0');
+            ft_putchar('0',j);
             lens2--;
         }
-        ft_putnbr_uu(n);
+        ft_putnbr_uu(n,j);
         while((len - lens> 0 && len > 0 && git_n(format) >if_m && lens >=if_m)||(lens <if_m&& len -if_m >0 &&len > 0 && git_n(format) >if_m))
         {
-            ft_putchar(' ');
+            ft_putchar(' ',j);
             len--;
         }
     }
@@ -59,17 +59,17 @@ void	ft_putnbr_u(unsigned int n, char * format)
         while((len - lens> 0 && len > 0 && git_n(format) >if_m && lens2 >=if_m)||(lens2 <if_m&& len -if_m >0 &&len > 0 && git_n(format) >if_m))
         {
             if(check_zero(format) && lens == 0 && !check_poin(format))
-                ft_putchar('0');
+                ft_putchar('0',j);
             else
-                ft_putchar(' ');
+                ft_putchar(' ',j);
 
             len--;
         }
         while(lens2 - if_m>0 && lens2 >if_m )
         {
-            ft_putchar('0');
+            ft_putchar('0',j);
             lens2--;
         }
-        ft_putnbr_uu(n);
+        ft_putnbr_uu(n,j);
     }
 }

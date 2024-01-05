@@ -1,6 +1,6 @@
 
 #include "ft_printf.h"
-static void	ft_putnbr_bb(unsigned int nbr, char Xx)
+static void	ft_putnbr_bb(unsigned int nbr, char Xx,int *j)
 {
 	unsigned int	base_len;
 	char			*base;
@@ -11,11 +11,11 @@ static void	ft_putnbr_bb(unsigned int nbr, char Xx)
 	else
 		base = "0123456789ABCDEF";
 	if (nbr < base_len)
-		ft_putchar(base[nbr % base_len]);
+		ft_putchar(base[nbr % base_len],j);
 	else
 	{
-		ft_putnbr_bb(nbr / base_len, Xx);
-		ft_putnbr_bb(nbr % base_len, Xx);
+		ft_putnbr_bb(nbr / base_len, Xx,j);
+		ft_putnbr_bb(nbr % base_len, Xx,j);
 	}
 }
 static void	chick_l(unsigned int nbr,int *x)
@@ -45,7 +45,7 @@ int  check_hash(char * format)
     return 0;
 }
 
-void	ft_putnbr_base(unsigned int n, char Xx,char *format)
+void	ft_putnbr_base(unsigned int n, char Xx,char *format,int *j)
 {
 	int x =0;
     int len =git_n(format);
@@ -58,19 +58,19 @@ void	ft_putnbr_base(unsigned int n, char Xx,char *format)
     {
 		if(check_hash(format))
 		{
-			ft_putchar('0');
-			ft_putchar(Xx);
+			ft_putchar('0',j);
+			ft_putchar(Xx,j);
 			len-=2;
 		}
         while(lens2 - if_m>0 && lens2 >if_m && ft_itoa(n)[x]!='-')
         {
-            ft_putchar('0');
+            ft_putchar('0',j);
             lens2--;
         }
-        ft_putnbr_bb(n,Xx);
+        ft_putnbr_bb(n,Xx,j);
         while((len - lens> 0 && len > 0 && git_n(format) >if_m && lens >=if_m)||(lens <if_m&& len -if_m >0 &&len > 0 && git_n(format) >if_m))
         {
-            ft_putchar(' ');
+            ft_putchar(' ',j);
             len--;
         }
     }
@@ -80,31 +80,31 @@ void	ft_putnbr_base(unsigned int n, char Xx,char *format)
 		{
 			if((check_zero(format) && lens == 0 && !check_poin(format)))
 			{
-				ft_putchar('0');
-				ft_putchar(Xx);
+				ft_putchar('0',j);
+				ft_putchar(Xx,j);
 			}
 			len-=2;
 		}
         while((len - lens> 0 && len > 0 && git_n(format) >if_m && lens2 >=if_m)||(lens2 <if_m&& len -if_m >0 &&len > 0 && git_n(format) >if_m))
         {
             if(check_zero(format) && lens == 0 && !check_poin(format))
-                ft_putchar('0');
+                ft_putchar('0',j);
             else
-                ft_putchar(' ');
+                ft_putchar(' ',j);
 
             len--;
         }
 		if(check_hash(format) && !(check_zero(format) && lens == 0 && !check_poin(format)))
 		{
-			ft_putchar('0');
-			ft_putchar(Xx);
+			ft_putchar('0',j);
+			ft_putchar(Xx,j);
 		}
         while(lens2 - if_m>0 && lens2 >if_m )
         {
-            ft_putchar('0');
+            ft_putchar('0',j);
             lens2--;
         }
-        ft_putnbr_bb(n,Xx);
+        ft_putnbr_bb(n,Xx,j);
     }
 }
 

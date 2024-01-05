@@ -27,29 +27,31 @@ char * git_s(const char * format)
 }
 
 /////////////////////////////////////////////////////////////////////////////
-void check_flags(va_list	args, char *format)
+void check_flags(va_list args, char *format,int *j)
 {
 	int x =0;
 	char flag = *(format + ft_strlen(format)-1);
 	if (flag == 's')
-		ft_putstr(va_arg(args, char *),format);
+		ft_putstr(va_arg(args, char *),format,j);
 	else if (flag == 'c')
-		ft_putchar_p(va_arg(args, int),format);
+		ft_putchar_p(va_arg(args, int),format,j);
 	else if (flag == 'd' || flag == 'i')
-		ft_putnbr(ft_itoa(va_arg(args, int)),format);
+		ft_putnbr(ft_itoa(va_arg(args, int)),format,j);
 	else if (flag == 'u')
-		ft_putnbr_u(va_arg(args, unsigned int),format);
+		ft_putnbr_u(va_arg(args, unsigned int),format,j);
 	else if (flag == 'x')
-		ft_putnbr_base(va_arg(args, int), 'x',format);
+		ft_putnbr_base(va_arg(args, int), 'x',format,j);
 	else if (flag == 'X')
-		ft_putnbr_base(va_arg(args, int), 'X',format);
+		ft_putnbr_base(va_arg(args, int), 'X',format,j);
 	else if (flag == 'p')
-		ft_putaddr(va_arg(args, void *),format);
+		ft_putaddr(va_arg(args, void *),format,j);
+	else if (flag == '%')
+		ft_putchar(format[x],j);
 	else
 	{
-		ft_putchar('%');
+		ft_putchar('%',j);
 		while(format[x])
-			ft_putchar(format[x++]);
+			ft_putchar(format[x++],j);
 	}
 }
 
@@ -63,36 +65,20 @@ int ft_printf ( const char * format, ... )
 	va_start(args, format);
     while (*format)
 	{
-		if (*format == '%')
+		if (*format == '%' && *(format+1)!='\0')
 		{
 			format++;
-			check_flags(args, git_s(format));
+			check_flags(args, git_s(format),&len);
 			//printf("%s\n", git_s(format));
 			format += (ft_strlen(git_s(format))-1);
 			
 		}
-		else
-			ft_putchar(*format);
+		else if(*format != '%')
+			ft_putchar(*format,&len);
 		format++;
 		
 	}
 	
 	va_end(args);
 	return (len);
-}
-int main ()
-{
-ft_printf("3%3d\n", 1);       
-//ft_printf("%5u\n", 300);      
-//ft_printf("%-5u\n", 300);     
-//ft_printf("%05u\n", 300);     
-//ft_printf("%.5u\n", 300);     
-//ft_printf("%-5.5u\n", 300);   
-
-printf("3%3d\n", 1);          // Default unsigned output: 300
-//printf("%5u\n", 300);         // Field width 5, right-justified: "  300"
-//printf("%-5u\n", 300);        // Field width 5, left-justified: "300  "
-//printf("%05u\n", 300);        // Field width 5, zero-padded: "00300"
-//printf("%.5u\n", 300);        // Precision 5, zero-padded: "00300"
-//printf("%-5.5u\n", 300);    // Left-justified, minimum 5 digits with zero padding: "00300"
 }

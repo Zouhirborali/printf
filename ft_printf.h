@@ -7,16 +7,16 @@
 #include <unistd.h>
 
 int		ft_printf(const char *format, ...);
-void	ft_putnbr(char *s ,char * format);
-void	ft_putnbr_u(unsigned int n , char * format);
+void	ft_putnbr(char *s ,char * format,int*j);
+void	ft_putnbr_u(unsigned int n, char * format,int*j);
 char	*ft_itoa(int n);
-void	ft_putchar(char c);
-void	ft_putchar_p(char c ,char *format);
-void	ft_putstr(char *s ,char * format);
+void	ft_putchar(char c,int *j);
+void	ft_putchar_p(char c ,char *format,int *j);
+void	ft_putstr(char *s ,char * format,int*j);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlen(const char *s);
-void	ft_putnbr_base(unsigned int n, char Xx,char *format);
-void	ft_putaddr(void *addr,char *format);
+void	ft_putnbr_base(unsigned int n, char Xx,char *format,int *j);
+void	ft_putaddr(void *addr, char *format,int *j);
 
 
 int git_n(char * format);
