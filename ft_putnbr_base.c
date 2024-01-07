@@ -35,7 +35,7 @@ int  check_hash(char * format)
     int x =0;
     while(format[x])
     {
-        while(format[x] &&(!(format[x] >= '0' && format[x] <= '9')&& format[x] != '.' && format[x] != '#')||format[x] =='0')
+        while((format[x] &&(!(format[x] >= '0' && format[x] <= '9')&& format[x] != '.' && format[x] != '#'))||format[x] =='0')
             x++;
         if(format[x] && format[x] == '#')
             return 1;
@@ -47,13 +47,14 @@ int  check_hash(char * format)
 
 void	ft_putnbr_base(unsigned int n, char Xx,char *format,int *j)
 {
-	int x =0;
+	
     int len =git_n(format);
     int lens = git_n_after_p(format);
     int lens2 = git_n_after_p(format);
-    int if_m ;
+    int if_m =0;
     chick_l(n,&if_m);
-	if_m -=2;
+    if (n == 0&& check_poin(format))
+    	if_m =0;
     if(check_maiees(format))
     {
 		if(check_hash(format))
@@ -62,12 +63,13 @@ void	ft_putnbr_base(unsigned int n, char Xx,char *format,int *j)
 			ft_putchar(Xx,j);
 			len-=2;
 		}
-        while(lens2 - if_m>0 && lens2 >if_m && ft_itoa(n)[x]!='-')
+        while(lens2 - if_m>0 && lens2 >if_m )
         {
             ft_putchar('0',j);
             lens2--;
         }
-        ft_putnbr_bb(n,Xx,j);
+	if(n!=0 || (!check_poin(format) && n==0) )
+        	ft_putnbr_bb(n,Xx,j);
         while((len - lens> 0 && len > 0 && git_n(format) >if_m && lens >=if_m)||(lens <if_m&& len -if_m >0 &&len > 0 && git_n(format) >if_m))
         {
             ft_putchar(' ',j);
@@ -94,7 +96,7 @@ void	ft_putnbr_base(unsigned int n, char Xx,char *format,int *j)
 
             len--;
         }
-		if(check_hash(format) && !(check_zero(format) && lens == 0 && !check_poin(format)))
+		if(n!=0 &&check_hash(format) && !(check_zero(format) && lens == 0 && !check_poin(format)))
 		{
 			ft_putchar('0',j);
 			ft_putchar(Xx,j);
@@ -104,7 +106,8 @@ void	ft_putnbr_base(unsigned int n, char Xx,char *format,int *j)
             ft_putchar('0',j);
             lens2--;
         }
-        ft_putnbr_bb(n,Xx,j);
+	if(n!=0 || (!check_poin(format) && n==0) )
+       		ft_putnbr_bb(n,Xx,j);
     }
 }
 

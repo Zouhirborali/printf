@@ -1,7 +1,7 @@
 #include "ft_printf.h"
 
 
-char * git_s(const char * format)
+static char * git_s(const char * format)
 {
     int x =0;
 	char * format2 = (char *)format;
@@ -11,25 +11,25 @@ char * git_s(const char * format)
     while(*format &&(*format == '#' || *format == '-' || *format == '+' || *format == '0' || *format == '.' || *format == ' '))
     {
         x++ ;
-        *format++;
+        format++;
    }
     while(*format &&((*format >= '0' && *format <= '9') || (*format =='.' && !pin)))
     {
 		if(*format =='.')
 			pin = 1;
         x++ ;
-        *format++;
+        format++;
    }
-	if( *format == 'c' || *format == 's' || *format == 'u' || *format == 'd' || *format == 'i' || *format == 'p' || *format == 'x' || *format == 'X')
+	if(*format == '%' || *format == 'c' || *format == 's' || *format == 'u' || *format == 'd' || *format == 'i' || *format == 'p' || *format == 'x' || *format == 'X')
    		return ft_substr(format2,0,x+1 );
 	else
 		return ft_substr(format2,0,x );
 }
 
 /////////////////////////////////////////////////////////////////////////////
-void check_flags(va_list args, char *format,int *j)
+static void check_flags(va_list args, char *format,int *j)
 {
-	int x =0;
+	
 	char flag = *(format + ft_strlen(format)-1);
 	if (flag == 's')
 		ft_putstr(va_arg(args, char *),format,j);
@@ -46,13 +46,7 @@ void check_flags(va_list args, char *format,int *j)
 	else if (flag == 'p')
 		ft_putaddr(va_arg(args, void *),format,j);
 	else if (flag == '%')
-		ft_putchar(format[x],j);
-	else
-	{
-		ft_putchar('%',j);
-		while(format[x])
-			ft_putchar(format[x++],j);
-	}
+		ft_putchar(flag,j);
 }
 
 int ft_printf ( const char * format, ... )
@@ -61,7 +55,6 @@ int ft_printf ( const char * format, ... )
 	int		len;
 
 	len = 0;
-    char * ff;
 	va_start(args, format);
     while (*format)
 	{
@@ -73,11 +66,40 @@ int ft_printf ( const char * format, ... )
 			format += (ft_strlen(git_s(format))-1);
 			
 		}
-		else if(*format != '%')
+		else
 			ft_putchar(*format,&len);
 		format++;
 		
 	}
 	va_end(args);
 	return (len);
+
+}
+
+#include <limits.h>
+int main()
+{
+
+ ft_printf(" %#x \n", 0);
+ ft_printf(" %#x \n", LONG_MIN);
+ ft_printf(" %#x %#x %#x %#x %#x %#x %#x\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+ ft_printf(" %#X \n", 0);
+ ft_printf(" %#X \n", LONG_MIN);
+ ft_printf(" %#X %#X %#X %#X %#X %#X %#X\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+
+printf("------------------\n");
+
+
+printf(" %#x \n", 0);
+printf(" %#x \n", LONG_MIN);
+printf(" %#x %#x %#x %#x %#x %#x %#x\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+printf(" %#X \n", 0);
+printf(" %#X \n", LONG_MIN);
+printf(" %#X %#X %#X %#X %#X %#X %#X\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+
+
+
+
+
+
 }

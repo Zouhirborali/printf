@@ -5,7 +5,6 @@
 
 void	ft_putchar_p(char c ,char *format,int *j)
 {
-    int x = 0;
     int len =git_n(format);
     if(check_maiees(format))
     {

@@ -13,7 +13,8 @@ void	ft_putnbr(char *s ,char * format,int*j)
         if_m = ft_strlen(s)-1;
     else
         if_m = ft_strlen(s);
-
+    if(s[x]=='0' && check_poin(format) && lens2==0)
+	    if_m =0;
     if(check_maiees(format))
     {
         if(check_sp(format) &&!check_pluse(format) && s[0]!='-')
@@ -37,6 +38,8 @@ void	ft_putnbr(char *s ,char * format,int*j)
         while(s[x])
         {
             if(s[x] == '-' || s[x] == '+')
+                x++;
+            else if(ft_strlen(s)==1 && s[x]=='0' && check_poin(format) && lens2==0)
                 x++;
             else
                 ft_putchar(s[x++],j);
@@ -88,6 +91,8 @@ void	ft_putnbr(char *s ,char * format,int*j)
         while(s[x])
         {
             if(s[x] == '-' || s[x] == '+')
+                x++;
+            else if(ft_strlen(s)==1 && s[x]=='0' && check_poin(format) && lens==0)
                 x++;
             else
                 ft_putchar(s[x++],j);
