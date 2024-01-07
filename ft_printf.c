@@ -75,31 +75,3 @@ int ft_printf ( const char * format, ... )
 	return (len);
 
 }
-
-#include <limits.h>
-int main()
-{
-
- ft_printf(" %#x \n", 0);
- ft_printf(" %#x \n", LONG_MIN);
- ft_printf(" %#x %#x %#x %#x %#x %#x %#x\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
- ft_printf(" %#X \n", 0);
- ft_printf(" %#X \n", LONG_MIN);
- ft_printf(" %#X %#X %#X %#X %#X %#X %#X\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-
-printf("------------------\n");
-
-
-printf(" %#x \n", 0);
-printf(" %#x \n", LONG_MIN);
-printf(" %#x %#x %#x %#x %#x %#x %#x\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-printf(" %#X \n", 0);
-printf(" %#X \n", LONG_MIN);
-printf(" %#X %#X %#X %#X %#X %#X %#X\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-
-
-
-
-
-
-}
