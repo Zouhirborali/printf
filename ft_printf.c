@@ -49,6 +49,7 @@ char	*ft_strdup(const char *s1 ,	char *re)
 static void check_flags(va_list args, char *format,int *j)
 {
 	char *re = NULL;
+	char*rr=NULL;
 	re = ft_strdup(format,re);
 	char flag = *(re + ft_strlen(re)-1);
 	if (flag == 's')
@@ -57,7 +58,8 @@ static void check_flags(va_list args, char *format,int *j)
 		ft_putchar_p(va_arg(args, int),re,j);
 	else if (flag == 'd' || flag == 'i')
 	{
-		ft_putnbr(ft_itoa(va_arg(args, int)),re,j);
+		rr =ft_itoa(va_arg(args, int),rr);
+		ft_putnbr(rr,re,j);
 	}
 	else if (flag == 'u')
 		ft_putnbr_u(va_arg(args, unsigned int),re,j);
@@ -71,6 +73,7 @@ static void check_flags(va_list args, char *format,int *j)
 		ft_putstr("%",format,j);
 		//ft_putchar(flag,j);
 	free(re);
+	free(rr);
 }
 
 int ft_printf ( const char * format, ... )

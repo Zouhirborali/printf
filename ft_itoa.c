@@ -42,9 +42,8 @@ static void	check_negative(int *n, unsigned int *nbr, size_t *nl)
 	}
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(int n ,char*num)
 {
-	char			*num;
 	size_t			i;
 	size_t			nl;
 	unsigned int	nbr;
@@ -67,7 +66,5 @@ char	*ft_itoa(int n)
 	if (n < 0)
 		num[i++] = '-';
 	num[i] = 0;
-	char * re =num;
-	free(num);
-	return (ft_strrev(re));
+	return (ft_strrev(num));
 }

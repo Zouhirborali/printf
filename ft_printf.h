@@ -9,7 +9,7 @@
 int		ft_printf(const char *format, ...);
 void	ft_putnbr(char *s ,char * format,int*j);
 void	ft_putnbr_u(unsigned int n, char * format,int*j);
-char	*ft_itoa(int n);
+char	*ft_itoa(int n ,char*num);
 void	ft_putchar(char c,int *j);
 void	ft_putchar_p(char c ,char *format,int *j);
 void	ft_putstr(char *s ,char * format,int*j);
