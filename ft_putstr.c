@@ -8,10 +8,10 @@ void	ft_putstr(char *s ,char * format,int*j)
     int l =0;
     if (s == NULL)
     {
-	if(git_n_after_p(format)>=6 ||(git_n_after_p(format)==0 && !check_poin(format)))
+	//if(git_n_after_p(format)>=6 ||(git_n_after_p(format)==0 && !check_poin(format)))
 	        ft_putstr("(null)", format,j);
-        else
-            ft_putstr("\0", format,j);
+      //  else
+            //ft_putstr("\0", format,j);
         return;
     }
     int len =git_n(format);

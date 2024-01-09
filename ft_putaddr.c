@@ -34,11 +34,11 @@ static void	chick_l(unsigned long int nbr,int *x)
 
 void	ft_putaddr(void *addr, char *format,int *j)
 {
-	if(addr == NULL)
-	{
-		ft_putstr("(nil)",format,j);
-		return;
-	}
+	// if(addr == NULL)
+	// {
+	// 	ft_putstr("(nil)",format,j);
+	// 	return;
+	// }
     int len =git_n(format);
     int lens = git_n_after_p(format);
     int lens2 = git_n_after_p(format);
