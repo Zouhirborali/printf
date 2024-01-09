@@ -1,13 +1,13 @@
 #include "ft_printf.h"
 
 
-static char * git_s(const char * format , char *buffer)
+static int  git_s(const char * format)
 {
     int x =0;
-	char * format2 = (char *)format;
+	//char * format2 = (char *)format;
 	int pin =0;
 	if(*format =='%')
-		return "%";
+		return 1;
     while(*format &&(*format == '#' || *format == '-' || *format == '+' || *format == '0' || *format == '.' || *format == ' '))
     {
         x++ ;
@@ -21,26 +21,46 @@ static char * git_s(const char * format , char *buffer)
         format++;
    }
 	if(*format == '%' || *format == 'c' || *format == 's' || *format == 'u' || *format == 'd' || *format == 'i' || *format == 'p' || *format == 'x' || *format == 'X')
-   		return ft_substr(format2,0,x+1 ,buffer);
+   		return x+1;
 	else
-		return ft_substr(format2,0,x ,buffer);
+		return x;
 }
 
 /////////////////////////////////////////////////////////////////////////////
-static void check_flags(va_list args, char *format,int *j)
+char	*ft_strdup(const char *s1 ,	char *re)
 {
 
-	char flag = *(format + ft_strlen(format)-1);
+	int		x;
+
+	x = 0;
+	re = malloc(sizeof(char) * ft_strlen((char *)s1) + 1);
+	if (!re)
+		return (NULL);
+	while (s1[x])
+	{
+		re[x] = s1[x];
+		x++;
+	}
+	re[x] = '\0';
+	return (re);
+}
+
+
+static void check_flags(va_list args, char *format,int *j)
+{
+	char *re = NULL;
+	re = ft_strdup(format,re);
+	char flag = *(re + ft_strlen(re)-1);
 	if (flag == 's')
-		ft_putstr(va_arg(args, char *),format,j);
+		ft_putstr(va_arg(args, char *),re,j);
 	else if (flag == 'c')
-		ft_putchar_p(va_arg(args, int),format,j);
+		ft_putchar_p(va_arg(args, int),re,j);
 	else if (flag == 'd' || flag == 'i')
 	{
-		ft_putnbr(ft_itoa(va_arg(args, int)),format,j);
+		ft_putnbr(ft_itoa(va_arg(args, int)),re,j);
 	}
 	else if (flag == 'u')
-		ft_putnbr_u(va_arg(args, unsigned int),format,j);
+		ft_putnbr_u(va_arg(args, unsigned int),re,j);
 	else if (flag == 'x')
 		ft_putnbr_base(va_arg(args, int), 'x',format,j);
 	else if (flag == 'X')
@@ -50,14 +70,14 @@ static void check_flags(va_list args, char *format,int *j)
 	else if (flag == '%')
 		ft_putstr("%",format,j);
 		//ft_putchar(flag,j);
-		
+	free(re);
 }
 
 int ft_printf ( const char * format, ... )
 {
     va_list	args;
 	int		len;
-	char * buffer =NULL;
+	//char * buffer =NULL;
 	len = 0;
 	va_start(args, format);
     while (*format)
@@ -65,12 +85,12 @@ int ft_printf ( const char * format, ... )
 		if (*format == '%' && *(format+1)!='\0')
 		{
 			format++;
-			buffer= malloc(sizeof(char) * (len + 1));
-			check_flags(args, git_s(format,buffer),&len);
-			//printf("|%s|\n", git_s(format));
-			//printf("|%lu|\n", ft_strlen(git_s(format))-1);
-			format += (ft_strlen(git_s(format,buffer))-1);
-			free(buffer);
+			//buffer= malloc(sizeof(char) * (len + 1));
+			check_flags(args, ft_substr(format,0,git_s(format)),&len);////////////////////////
+			//printf("|%s|\n", ft_substr(format,0,2));
+			//printf("|d=%d|\n", git_s(format));
+			format += (git_s(format)-1);
+			//free(buffer);
 		}
 		else
 			ft_putchar(*format,&len);
@@ -84,12 +104,12 @@ int ft_printf ( const char * format, ... )
 }
 // int main ()
 // {
-//  ft_printf("%12.9i\n" ,19);
+//  ft_printf("%020.5u\n", 1024u);
 
 
 // printf("---------------------------\n");
 
 
-//  printf("%12.9i\n" ,19);
+// printf("%020.5u\n", 1024u);
 
 // }

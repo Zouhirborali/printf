@@ -1,17 +1,19 @@
 #include "ft_printf.h"
 
-char *ft_substr(const char *s, unsigned int start, size_t len, char *buffer)
+char *ft_substr(const char *s, unsigned int start, size_t len)
 {
     size_t i = 0;
-
-    if (!s || !buffer)
+	char buffer[len+1];
+	char * re;
+    if (!s)
         return NULL;
 
     while (s[start] && i < len)
         buffer[i++] = s[start++];
 
     buffer[i] = '\0';
-    return buffer;
+	re = buffer;
+    return re;
 }
 // char	*ft_substr(char const *s, unsigned int start, size_t len)
 // {
