@@ -105,14 +105,20 @@ int ft_printf ( const char * format, ... )
 	return (len);
 
 }
-// int main ()
-// {
-//  ft_printf("%020.5u\n", 1024u);
+#include <limits.h>
+int main ()
+{
+ft_printf("%#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x\n", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN, INT_MAX,UINT_MAX);
+
+ft_printf("%#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x\n", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN, INT_MAX, UINT_MAX);
 
 
-// printf("---------------------------\n");
+printf("---------------------------\n");
 
 
-// printf("%020.5u\n", 1024u);
+printf("%#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x\n", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN, INT_MAX,UINT_MAX);
 
-// }
+printf("%#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x\n", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN, INT_MAX, UINT_MAX);
+
+
+}
