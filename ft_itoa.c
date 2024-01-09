@@ -67,5 +67,7 @@ char	*ft_itoa(int n)
 	if (n < 0)
 		num[i++] = '-';
 	num[i] = 0;
-	return (ft_strrev(num));
+	char * re =num;
+	free(num);
+	return (ft_strrev(re));
 }

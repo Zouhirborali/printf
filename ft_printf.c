@@ -1,7 +1,7 @@
 #include "ft_printf.h"
 
 
-static char * git_s(const char * format)
+static char * git_s(const char * format , char *buffer)
 {
     int x =0;
 	char * format2 = (char *)format;
@@ -21,9 +21,9 @@ static char * git_s(const char * format)
         format++;
    }
 	if(*format == '%' || *format == 'c' || *format == 's' || *format == 'u' || *format == 'd' || *format == 'i' || *format == 'p' || *format == 'x' || *format == 'X')
-   		return ft_substr(format2,0,x+1 );
+   		return ft_substr(format2,0,x+1 ,buffer);
 	else
-		return ft_substr(format2,0,x );
+		return ft_substr(format2,0,x ,buffer);
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -57,7 +57,7 @@ int ft_printf ( const char * format, ... )
 {
     va_list	args;
 	int		len;
-
+	char * buffer =NULL;
 	len = 0;
 	va_start(args, format);
     while (*format)
@@ -65,9 +65,12 @@ int ft_printf ( const char * format, ... )
 		if (*format == '%' && *(format+1)!='\0')
 		{
 			format++;
-			check_flags(args, git_s(format),&len);
+			buffer= malloc(sizeof(char) * (len + 1));
+			check_flags(args, git_s(format,buffer),&len);
 			//printf("|%s|\n", git_s(format));
-			format += (ft_strlen(git_s(format))-1);
+			//printf("|%lu|\n", ft_strlen(git_s(format))-1);
+			format += (ft_strlen(git_s(format,buffer))-1);
+			free(buffer);
 		}
 		else
 			ft_putchar(*format,&len);
@@ -81,12 +84,12 @@ int ft_printf ( const char * format, ... )
 }
 // int main ()
 // {
-//  ft_printf("%0%%0104.20x%---176p%--8.25X%-120.98i\n" ,462982545u,(void*)2547223992875393254lu,1267937232u,640121608);
+//  ft_printf("%12.9i\n" ,19);
 
 
 // printf("---------------------------\n");
 
 
-// printf("%0%%0104.20x%---176p%--8.25X%-120.98i" ,462982545u,(void*)2547223992875393254lu,1267937232u,640121608);
+//  printf("%12.9i\n" ,19);
 
 // }
