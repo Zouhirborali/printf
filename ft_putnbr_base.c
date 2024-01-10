@@ -1,23 +1,6 @@
 
 #include "ft_printf.h"
-static void	ft_putnbr_bb(unsigned int nbr, char Xx,int *j)
-{
-	unsigned int	base_len;
-	char			*base;
 
-	base_len = 16;
-	if (Xx == 'x')
-		base = "0123456789abcdef";
-	else
-		base = "0123456789ABCDEF";
-	if (nbr < base_len)
-		ft_putchar(base[nbr % base_len],j);
-	else
-	{
-		ft_putnbr_bb(nbr / base_len, Xx,j);
-		ft_putnbr_bb(nbr % base_len, Xx,j);
-	}
-}
 static void	chick_l(unsigned int nbr,int *x)
 {
 
@@ -30,84 +13,99 @@ static void	chick_l(unsigned int nbr,int *x)
 	}
 }
 
-int  check_hash(char * format)
+
+
+static int	*intt(unsigned int n, char *format, int *re)
 {
-    int x =0;
-    while(format[x])
-    {
-        while((format[x] &&(!(format[x] >= '0' && format[x] <= '9')&& format[x] != '.' && format[x] != '#'))||format[x] =='0')
-            x++;
-        if(format[x] && format[x] == '#')
-            return 1;
-        return 0;
-    }
-    
-    return 0;
+	int	if_m;
+
+	re[0] = git_n(format);
+	re[1] = git_n_after_p(format);
+	re[2] = git_n_after_p(format);
+	if_m = 0 ;
+	chick_l(n,&if_m);
+	if (n == 0&& check_poin(format))
+		if_m =0;
+	re[3] = if_m;
+	re[4] = check_hash(format);
+	re[5] = check_poin(format);
+	re[6] = git_n(format);
+	re[7] = check_zero(format);
+	return (re);
 }
 
-void	ft_putnbr_base(unsigned int n, char Xx,char *format,int *j)
+void	min1(unsigned int n, char Xx, int *j, int *re)
 {
-	
-    int len =git_n(format);
-    int lens = git_n_after_p(format);
-    int lens2 = git_n_after_p(format);
-    int if_m =0;
-    chick_l(n,&if_m);
-    if (n == 0&& check_poin(format))
-    	if_m =0;
-    if(check_maiees(format))
-    {
-		if(check_hash(format)&&n!= 0)
-		{
-			ft_putchar('0',j);
-			ft_putchar(Xx,j);
-			len-=2;
-		}
-        while(lens2 - if_m>0 && lens2 >if_m )
-        {
-            ft_putchar('0',j);
-            lens2--;
-        }
-	if(n!=0 || (!check_poin(format) && n==0) )
-        	ft_putnbr_bb(n,Xx,j);
-        while((len - lens> 0 && len > 0 && git_n(format) >if_m && lens >=if_m)||(lens <if_m&& len -if_m >0 &&len > 0 && git_n(format) >if_m))
-        {
-            ft_putchar(' ',j);
-            len--;
-        }
-    }
-    else
-    {
-		if(check_hash(format)&&n!= 0)
-		{
-			if((check_zero(format) && lens == 0 && !check_poin(format)))
-			{
-				ft_putchar('0',j);
-				ft_putchar(Xx,j);
-			}
-				len-=2;
-		}
-        while((len - lens> 0 && len > 0 && git_n(format) >if_m && lens2 >=if_m)||(lens2 <if_m&& len -if_m >0 &&len > 0 && git_n(format) >if_m))
-        {
-            if(check_zero(format) && lens == 0 && !check_poin(format))
-                ft_putchar('0',j);
-            else
-                ft_putchar(' ',j);
+	if (re[4] && n != 0)
+	{
+		ft_putchar('0', j);
+		ft_putchar(Xx, j);
+		re[0] -= 2;
+	}
+	while (re[2] - re[3] > 0 && re[2] > re[3])
+	{
+		ft_putchar('0', j);
+		re[2]--;
+	}
+	if (n!=0 || (!re[5] && n == 0))
+		ft_putaddr_hex(n, Xx, j);
+	while ((re[0] - re[1] > 0 && re[0] > 0 && re[6] > re[3] && re[1] >= re[3])
+		|| (re[1] < re[3] && re[0] - re[3] > 0 && 
+			re[0] > 0 && re[6] > re[3]))
+	{
+		ft_putchar(' ', j);
+		re[0]--;
+	}
+}
 
-            len--;
-        }
-		if(n!=0 &&check_hash(format) && !(check_zero(format) && lens == 0 && !check_poin(format)))
+void	pl1(unsigned int n, char Xx, int *j, int *re)
+{
+	if (re[4] && n != 0)
+	{
+		if ((re[7] && re[1] == 0 && !re[5]))
 		{
-			ft_putchar('0',j);
-			ft_putchar(Xx,j);
+			ft_putchar('0', j);
+			ft_putchar(Xx, j);
 		}
-        while(lens2 - if_m>0 && lens2 >if_m )
-        {
-            ft_putchar('0',j);
-            lens2--;
-        }
-	if(n!=0 || (!check_poin(format) && n==0) )
-       		ft_putnbr_bb(n,Xx,j);
-    }
+		re[0] -= 2;
+	}
+	while ((re[0] - re[1] > 0 && re[0] > 0 && re[6] > re[3] && re[2]  >= re[3])
+		|| (re[2] < re[3] && re[0] - re[3] > 0 &&re[0] > 0 && re[6] > re[3]))
+	{
+		if (re[7] && re[1] == 0 && !re[5])
+			ft_putchar('0', j);
+		else
+			ft_putchar(' ', j);
+		re[0]--;
+	}
+	if (n != 0 && re[4] && !(re[7] && re[1] == 0 && !re[5]))
+	{
+		ft_putchar('0', j);
+		ft_putchar(Xx, j);
+	}
+}
+
+void	ft_putnbr_base(unsigned int n, char Xx, char *format, int *j)
+{
+	int	*re;
+
+	re = malloc(sizeof(re) * 6);
+	re = intt(n, format, re);
+	if (check_maiees(format))
+	{
+		min1(n, Xx, j, re);
+	}
+	else
+	{
+		pl1(n, Xx, j, re);
+		while (re[2] - re[3] > 0 && re[2] > re[3])
+		{
+			ft_putchar('0', j);
+			re[2]--;
+		}
+		if (n != 0 || (!check_poin(format) && n == 0))
+			ft_putaddr_hex(n, Xx, j);
+	}
+	free(re);
 }
 

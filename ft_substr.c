@@ -1,43 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbakkas <zbakkas@student.1337.ma>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/10 17:13:57 by zbakkas           #+#    #+#             */
+/*   Updated: 2024/01/10 17:30:37 by zbakkas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-char *ft_substr(const char *s, unsigned int start, size_t len)
+char	*ft_substr(const char *s, unsigned int start, size_t len, char	*buffer)
 {
-    size_t i = 0;
-	char buffer[len+1];
-	char * re;
-    if (!s)
-        return NULL;
+	size_t	i;
 
-    while (s[start] && i < len)
-        buffer[i++] = s[start++];
+	i = 0;
+	if (!s)
+		return (NULL);
 
-    buffer[i] = '\0';
-	re = buffer;
-    return re;
+	while (s[start] && i < len)
+		buffer[i++] = s[start++];
+
+	buffer[i] = '\0';
+	return (buffer);
 }
-// char	*ft_substr(char const *s, unsigned int start, size_t len)
-// {
-// 	char	*substr =NULL;
-// 	//char *re;
-// 	size_t	i;
-// 	if(substr)
-// 		free(substr);
-// 	i = 0;
-// 	if (!s)
-// 		return (NULL);
-// 	if (start >= ft_strlen(s))
-// 		return ((char *) malloc(1));
-// 	if (ft_strlen(s) <= start + len)
-// 		substr = malloc(sizeof(char) * (ft_strlen(s) - start + 1));
-// 	else
-// 		substr = malloc(sizeof(char) * (len + 1));
-// 	if (!substr)
-// 		return (NULL);
-// 	while (s[start] && i < len)
-// 		substr[i++] = s[start++];
-// 	substr[i] = '\0';
-
-// 	//re= substr;
-// 	//free(substr);
-// 	return (substr);
-// }

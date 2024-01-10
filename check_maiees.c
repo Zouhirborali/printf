@@ -1,13 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_maiees.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbakkas <zbakkas@student.1337.ma>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/10 16:41:54 by zbakkas           #+#    #+#             */
+/*   Updated: 2024/01/10 16:46:06 by zbakkas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int check_maiees(char * format)
+int	check_maiees(char *format)
 {
-    int x =0;
-    while(format[x])
-    {
-        if(format[x]=='-')
-            return 1;
-        x++;
-    }
-    return 0;
+	int	x;
+
+	x = 0;
+	while (format[x])
+	{
+		if (format[x] == '-')
+			return (1);
+		x++;
+	}
+	return (0);
 }

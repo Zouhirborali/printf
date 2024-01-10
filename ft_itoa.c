@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbakkas <zbakkas@student.1337.ma>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/10 16:55:01 by zbakkas           #+#    #+#             */
+/*   Updated: 2024/01/10 16:55:27 by zbakkas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
@@ -42,7 +53,7 @@ static void	check_negative(int *n, unsigned int *nbr, size_t *nl)
 	}
 }
 
-char	*ft_itoa(int n ,char*num)
+char	*ft_itoa(int n, char*num)
 {
 	size_t			i;
 	size_t			nl;

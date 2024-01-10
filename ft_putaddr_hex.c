@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   git_n_after_p.c                                    :+:      :+:    :+:   */
+/*   ft_putaddr_hex.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zbakkas <zbakkas@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 17:30:42 by zbakkas           #+#    #+#             */
-/*   Updated: 2024/01/10 17:31:28 by zbakkas          ###   ########.fr       */
+/*   Created: 2024/01/10 18:31:03 by zbakkas           #+#    #+#             */
+/*   Updated: 2024/01/10 19:03:56 by zbakkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	git_n_after_p(char * format)
+void	ft_putaddr_hex(unsigned long int nbr, char Xx, int *j)
 {
-	int	x;
-	int	re;
+	unsigned long int	base_len;
+	char				*base;
 
-	x = 0;
-	re = 0;
-	while (format[x])
+	base_len = 16;
+	if (Xx == 'x')
+		base = "0123456789abcdef";
+	else
+		base = "0123456789ABCDEF";
+	if (nbr < base_len)
+		ft_putchar(base[nbr % base_len], j);
+	else
 	{
-		while (format[x] && format[x] != '.')
-			x++;
-		while (format[x] && format[x] == '.')
-			x++;
-		while (format[x] && (format[x] >= '0' && format[x] <= '9'))
-			re = (re * 10) + (format[x++] - '0');
-		return (re);
+		ft_putaddr_hex(nbr / base_len, Xx, j);
+		ft_putaddr_hex(nbr % base_len, Xx, j);
 	}
-	return (re);
 }
