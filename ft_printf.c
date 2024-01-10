@@ -105,20 +105,17 @@ int ft_printf ( const char * format, ... )
 	return (len);
 
 }
-#include <limits.h>
-int main ()
-{
-ft_printf("%#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x\n", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN, INT_MAX,UINT_MAX);
-
-ft_printf("%#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x\n", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN, INT_MAX, UINT_MAX);
+// #include <limits.h>
+// int main ()
+// {
 
 
-printf("---------------------------\n");
+// ft_printf("%-#1x, %-#1x, %-#1x, %-#1x, %-#1x, %-#1x, %-#1x, %-#1x, %-#1x, %-#1x\n", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN,INT_MAX, UINT_MAX);
+// ft_printf("%-#x, %-#x, %-#x, %-#x, %-#x, %-#x, %-#x, %-#x, %-#x, %-#x\n", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN, INT_MAX, UINT_MAX);
+
+// printf("---------------------------\n");
 
 
-printf("%#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x\n", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN, INT_MAX,UINT_MAX);
-
-printf("%#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x, %#5x\n", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN, INT_MAX, UINT_MAX);
-
-
-}
+// printf("%-#1x, %-#1x, %-#1x, %-#1x, %-#1x, %-#1x, %-#1x, %-#1x, %-#1x, %-#1x\n", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN,INT_MAX, UINT_MAX);
+// printf("%-#x, %-#x, %-#x, %-#x, %-#x, %-#x, %-#x, %-#x, %-#x, %-#x\n", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN, INT_MAX, UINT_MAX);
+// }

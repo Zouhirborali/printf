@@ -57,7 +57,7 @@ void	ft_putnbr_base(unsigned int n, char Xx,char *format,int *j)
     	if_m =0;
     if(check_maiees(format))
     {
-		if(check_hash(format))
+		if(check_hash(format)&&n!= 0)
 		{
 			ft_putchar('0',j);
 			ft_putchar(Xx,j);
@@ -78,14 +78,14 @@ void	ft_putnbr_base(unsigned int n, char Xx,char *format,int *j)
     }
     else
     {
-		if(check_hash(format))
+		if(check_hash(format)&&n!= 0)
 		{
 			if((check_zero(format) && lens == 0 && !check_poin(format)))
 			{
 				ft_putchar('0',j);
 				ft_putchar(Xx,j);
 			}
-			len-=2;
+				len-=2;
 		}
         while((len - lens> 0 && len > 0 && git_n(format) >if_m && lens2 >=if_m)||(lens2 <if_m&& len -if_m >0 &&len > 0 && git_n(format) >if_m))
         {
