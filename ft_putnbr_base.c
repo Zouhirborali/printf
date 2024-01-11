@@ -1,19 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbakkas <zbakkas@student.1337.ma>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/10 20:08:31 by zbakkas           #+#    #+#             */
+/*   Updated: 2024/01/10 20:09:35 by zbakkas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	chick_l(unsigned int nbr,int *x)
+static void	chick_l(unsigned int nbr, int *x)
 {
-
 	if (nbr < 16)
 		(*x)++;
 	else
 	{
-		chick_l(nbr / 16,x);
+		chick_l(nbr / 16, x);
 		chick_l(nbr % 16, x);
 	}
 }
-
-
 
 static int	*intt(unsigned int n, char *format, int *re)
 {
@@ -23,9 +31,9 @@ static int	*intt(unsigned int n, char *format, int *re)
 	re[1] = git_n_after_p(format);
 	re[2] = git_n_after_p(format);
 	if_m = 0 ;
-	chick_l(n,&if_m);
-	if (n == 0&& check_poin(format))
-		if_m =0;
+	chick_l(n, &if_m);
+	if (n == 0 && check_poin(format))
+		if_m = 0;
 	re[3] = if_m;
 	re[4] = check_hash(format);
 	re[5] = check_poin(format);
@@ -47,7 +55,7 @@ void	min1(unsigned int n, char Xx, int *j, int *re)
 		ft_putchar('0', j);
 		re[2]--;
 	}
-	if (n!=0 || (!re[5] && n == 0))
+	if (n != 0 || (!re[5] && n == 0))
 		ft_putaddr_hex(n, Xx, j);
 	while ((re[0] - re[1] > 0 && re[0] > 0 && re[6] > re[3] && re[1] >= re[3])
 		|| (re[1] < re[3] && re[0] - re[3] > 0 && 
@@ -69,8 +77,8 @@ void	pl1(unsigned int n, char Xx, int *j, int *re)
 		}
 		re[0] -= 2;
 	}
-	while ((re[0] - re[1] > 0 && re[0] > 0 && re[6] > re[3] && re[2]  >= re[3])
-		|| (re[2] < re[3] && re[0] - re[3] > 0 &&re[0] > 0 && re[6] > re[3]))
+	while ((re[0] - re[1] > 0 && re[0] > 0 && re[6] > re[3] && re[2] >= re[3])
+		|| (re[2] < re[3] && re[0] - re[3] > 0 && re[0] > 0 && re[6] > re[3]))
 	{
 		if (re[7] && re[1] == 0 && !re[5])
 			ft_putchar('0', j);
@@ -108,4 +116,3 @@ void	ft_putnbr_base(unsigned int n, char Xx, char *format, int *j)
 	}
 	free(re);
 }
-

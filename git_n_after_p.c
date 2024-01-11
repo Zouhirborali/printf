@@ -6,13 +6,13 @@
 /*   By: zbakkas <zbakkas@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:30:42 by zbakkas           #+#    #+#             */
-/*   Updated: 2024/01/10 17:31:28 by zbakkas          ###   ########.fr       */
+/*   Updated: 2024/01/11 11:28:35 by zbakkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	git_n_after_p(char * format)
+int	git_n_after_p(char *format)
 {
 	int	x;
 	int	re;

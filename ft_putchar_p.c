@@ -6,7 +6,7 @@
 /*   By: zbakkas <zbakkas@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:03:40 by zbakkas           #+#    #+#             */
-/*   Updated: 2024/01/10 17:05:19 by zbakkas          ###   ########.fr       */
+/*   Updated: 2024/01/11 11:27:29 by zbakkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,4 @@ void	ft_putchar_p(char c, char *format, int *j)
 		}
 		ft_putchar(c, j);
 	}
-
 }

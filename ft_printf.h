@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbakkas <zbakkas@student.1337.ma>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/11 11:23:52 by zbakkas           #+#    #+#             */
+/*   Updated: 2024/01/11 11:26:57 by zbakkas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# ifndef FT_PRINTF_H
+#ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
 # include <stdio.h>
@@ -14,7 +25,8 @@ char	*ft_itoa(int n, char*num);
 void	ft_putchar(char c, int *j);
 void	ft_putchar_p(char c, char *format, int *j);
 void	ft_putstr(char *s, char *format, int*j);
-char	*ft_substr(const char *s, unsigned int start, size_t len, char	*buffer);
+char	*ft_substr(const char *s, unsigned int start, 
+			size_t len, char *buffer);
 size_t	ft_strlen(const char *s);
 void	ft_putnbr_base(unsigned int n, char Xx, char *format, int *j);
 void	ft_putaddr(void *addr, char *format, int *j);
@@ -28,7 +40,7 @@ int		check_pluse(char *format);
 int		git_n_after_p(char *format);
 int		check_maiees(char *format);
 int		check_poin(char *format);
-int	check_hash(char *format);
+int		check_hash(char *format);
 
 //void	ft_putnbr_base(unsigned int nbr, char Xx, int *len);
 //void	ft_putaddr(void *addr, int *len);
