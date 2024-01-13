@@ -6,7 +6,7 @@
 /*   By: zbakkas <zbakkas@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:59:18 by zbakkas           #+#    #+#             */
-/*   Updated: 2024/01/11 12:22:48 by zbakkas          ###   ########.fr       */
+/*   Updated: 2024/01/13 15:31:35 by zbakkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ int	ft_printf(const char *format, ...)
 	int		len;
 	char	*l;
 
-	if (write(1, "", 0) == -1)
-		return (-1);
 	len = 0;
 	l = NULL;
 	va_start(args, format);

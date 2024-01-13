@@ -6,14 +6,13 @@
 /*   By: zbakkas <zbakkas@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:23:52 by zbakkas           #+#    #+#             */
-/*   Updated: 2024/01/11 11:26:57 by zbakkas          ###   ########.fr       */
+/*   Updated: 2024/01/13 15:32:52 by zbakkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>

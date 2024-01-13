@@ -1,3 +1,4 @@
+CC = cc
 NAME	= libftprintf.a
 SRCS = check_maiees.c check_pluse.c check_poin.c check_sp.c\
 	check_zero.c ft_itoa.c ft_printf.c ft_putaddr.c ft_putchar_p.c\
@@ -6,13 +7,15 @@ SRCS = check_maiees.c check_pluse.c check_poin.c check_sp.c\
 
 OBJS	= ${SRCS:%.c=%.o}
 
-FLAGS	= -Wall -Wextra -Werror
-
-$(NAME):
-	gcc $(FLAGS) -c $(SRCS) -I ./
-	ar rc $(NAME) $(OBJS)
+CFLAGS	= -Wall -Wextra -Werror
 
 all: $(NAME)
+
+$(NAME):$(OBJS) ft_printf.h
+	ar rc $(NAME) $(OBJS)
+
+%.o:%.c ft_printf.h
+	$(CC) $(CFLAGS) -c $< -o $@ 
 
 bonus:all
 
